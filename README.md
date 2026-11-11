@@ -18,13 +18,40 @@ These materials accompany the [.NET Conf 2026 session](https://dotnet.microsoft.
 
 ## Run the demos
 
-Requires .NET SDK 11.0.100. Run commands from `demos/` so `global.json` selects the SDK, for example:
+Requires .NET SDK 11.0.100. From the repository root, enter `demos/` and run a project directly. The `Prepare-Demos.ps1` helper mentioned in some error text is not included in this snapshot.
 
 ```powershell
-dotnet run --project .\01-model-comparison\ModelComparison.csproj
+Set-Location .\demos
+$project = ".\01-model-comparison\ModelComparison.csproj"
+dotnet user-secrets set "FOUNDRY_PROJECT_ENDPOINT" "<your Foundry project endpoint>" --project $project
+dotnet user-secrets set "GPT_DEPLOYMENT" "<your GPT deployment name>" --project $project
+dotnet user-secrets set "GROK_DEPLOYMENT" "<your Grok deployment name>" --project $project
+dotnet user-secrets set "KIMI_DEPLOYMENT" "<your Kimi deployment name>" --project $project
+dotnet run --project $project
 ```
 
-Service-connected demos require compatible, preconfigured Microsoft Foundry resources and credentials; none are included. Hosted projects are source examples only: this bundle does not include deployment tooling, and hosted .NET 11 runtime behavior has not been verified.
+Every project has a per-project User Secrets ID set in `Directory.Build.props` or its project file. You can use the environment-variable names below instead of User Secrets. `DemoEnvironment.Read` gives environment variables precedence over User Secrets; hosted projects load User Secrets and then environment variables. These settings identify endpoints, deployments, agents, or toolboxes. They do not authenticate you, and no credentials or Foundry resources are included.
+
+| Demo | Required configuration | Identity and service requirement |
+| --- | --- | --- |
+| `01-model-comparison` | `FOUNDRY_PROJECT_ENDPOINT`, `GPT_DEPLOYMENT`, `GROK_DEPLOYMENT`, `KIMI_DEPLOYMENT` | `AzureCliCredential`; an existing project with all three deployments. Sends requests to each deployment. |
+| `02-prompt-agent` | `FOUNDRY_PROJECT_ENDPOINT`, `FOUNDRY_AGENT_NAME`, `FOUNDRY_AGENT_VERSION` | `AzureCliCredential`; an existing, versioned Foundry agent. Runs that remote agent. |
+| `03-code-agent` | `FOUNDRY_PROJECT_ENDPOINT`, `GPT_DEPLOYMENT` | `AzureCliCredential`; an existing model deployment. The agent code runs locally but calls the remote model. |
+| `04-hosted-agent` | `AZURE_AI_PROJECT_ENDPOINT` or `FOUNDRY_PROJECT_ENDPOINT`; `AZURE_AI_MODEL_DEPLOYMENT_NAME` or `GPT_DEPLOYMENT` | `DefaultAzureCredential`; an existing model deployment. Starts a local Responses host. |
+| `05-hosted-agent-tools` | `AZURE_AI_PROJECT_ENDPOINT` or `FOUNDRY_PROJECT_ENDPOINT`; `AZURE_AI_MODEL_DEPLOYMENT_NAME` or `GPT_DEPLOYMENT` | `DefaultAzureCredential`; an existing model deployment. Starts a local Responses host with deterministic tools. |
+| `10-bounded-decisions` | Environment: `Decision__Endpoint`, `Decision__Deployment`; User Secrets: `Decision:Endpoint`, `Decision:Deployment` | `AzureCliCredential`; an existing Decisions endpoint and deployment. |
+| `11-bounded-decisions-agent` | Environment: `Decision__Endpoint`, `Decision__Deployment`; User Secrets: `Decision:Endpoint`, `Decision:Deployment` | `AzureCliCredential`; an existing Decisions endpoint and deployment. |
+| `12-bounded-decisions-agent-hosted` | Environment: `Decision__Endpoint`, `Decision__Deployment`; User Secrets: `Decision:Endpoint`, `Decision:Deployment` | `DefaultAzureCredential`; an existing Decisions endpoint and deployment. Starts a local Responses host. |
+| `20-toolbox-discovery` | `TOOLBOX_ENDPOINT` | `AzureCliCredential`; an existing Foundry Toolbox MCP HTTPS endpoint on `*.services.ai.azure.com`, with a `/toolboxes/` path and `/mcp?api-version=v1` suffix. Lists metadata only; it does not call a tool. |
+
+Before running a demo that explicitly uses `AzureCliCredential`, sign in with `az login` as an identity authorized for the selected project, deployment, or Toolbox. The hosted demos use `DefaultAzureCredential`, not `AzureCliCredential`; configure a credential source supported by that chain for local use and the appropriate identity for any deployment. The hosted projects start local servers and do not deploy resources. Deployed hosted .NET 11 runtime behavior has not been verified.
+
+`21-application-guardrails` and `22-tool-evaluation` run locally without settings, credentials, or Foundry/model service calls. `dotnet run` may still need NuGet access to restore packages:
+
+```powershell
+dotnet run --project .\21-application-guardrails\ApplicationGuardrails.csproj
+dotnet run --project .\22-tool-evaluation\ToolEvaluation.csproj
+```
 
 ## Slides
 
