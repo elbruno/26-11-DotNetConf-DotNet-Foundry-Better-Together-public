@@ -58,3 +58,7 @@ dotnet run --project .\22-tool-evaluation\ToolEvaluation.csproj
 [View the final v07 session slides (PDF)](dotnet-foundry-better-together-v07.pdf).
 
 The slides reuse artwork from the official .NET Conf 2026 template, Copyright (c) 2026 .NET Conf. Its MIT notice and scope are in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). The .NET logo identifies the platform and is used subject to the [official .NET Brand Guidelines](https://github.com/dotnet/brand). Microsoft Learn sources are cited on slide 7.
+
+## License
+
+The original demo code is licensed under the MIT License in [LICENSE](LICENSE). That license does not cover the slide PDF or other third-party materials; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for the applicable notice.
