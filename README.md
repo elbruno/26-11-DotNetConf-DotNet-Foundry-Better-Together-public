@@ -30,4 +30,4 @@ Service-connected demos require compatible, preconfigured Microsoft Foundry reso
 
 [View the final v07 session slides (PDF)](dotnet-foundry-better-together-v07.pdf).
 
-The .NET logo in the slides identifies the platform and is used subject to the [official .NET Brand Guidelines](https://github.com/dotnet/brand). Microsoft Learn sources are cited on slide 7.
+The slides reuse artwork from the official .NET Conf 2026 template, Copyright (c) 2026 .NET Conf. Its MIT notice and scope are in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). The .NET logo identifies the platform and is used subject to the [official .NET Brand Guidelines](https://github.com/dotnet/brand). Microsoft Learn sources are cited on slide 7.
