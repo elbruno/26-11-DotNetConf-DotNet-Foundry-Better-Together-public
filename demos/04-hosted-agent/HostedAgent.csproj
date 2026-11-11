@@ -1,0 +1,13 @@
+<!-- Purpose: Publish a standalone Foundry Responses v2 code package. -->
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <UserSecretsId>dotnet-conf-better-together-HostedAgent</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Agents.AI.Foundry.Hosting" Version="1.27.0-preview.261030.1" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+<!-- Purpose: Define a local Microsoft Agent Framework agent backed by native Decisions. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.21.0" />
+    <PackageReference Include="ElBruno.AI.Decisions.Foundry" Version="0.6.3" />
+    <PackageReference Include="Microsoft.Agents.AI" Version="1.27.0" />
+  </ItemGroup>
+</Project>

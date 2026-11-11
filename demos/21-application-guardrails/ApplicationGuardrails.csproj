@@ -1,0 +1,6 @@
+<!-- Purpose: Demonstrate explicit application-side input and action boundaries offline. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+</Project>

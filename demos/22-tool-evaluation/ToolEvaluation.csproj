@@ -1,0 +1,9 @@
+<!-- Purpose: Evaluate the real deterministic tool against a small golden dataset offline. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\05-hosted-agent-tools\HostedToolsAgent.csproj" />
+  </ItemGroup>
+</Project>

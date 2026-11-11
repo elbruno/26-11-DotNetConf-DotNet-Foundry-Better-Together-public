@@ -1,0 +1,14 @@
+<!-- Purpose: Share SDK settings and per-project development configuration for the demos. -->
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <UserSecretsId>dotnet-conf-better-together-$(MSBuildProjectName)</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'HostedAgent' And '$(MSBuildProjectName)' != 'HostedToolsAgent' And '$(MSBuildProjectName)' != 'HostedDecisionAgent'">
+    <Compile Include="$(MSBuildThisFileDirectory)shared\DemoEnvironment.cs" Link="DemoEnvironment.cs" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="11.0.0" />
+  </ItemGroup>
+</Project>

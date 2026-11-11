@@ -1,0 +1,10 @@
+<!-- Purpose: Run a direct native Decisions example with the ElBruno Foundry library. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.21.0" />
+    <PackageReference Include="ElBruno.AI.Decisions.Foundry" Version="0.6.3" />
+  </ItemGroup>
+</Project>

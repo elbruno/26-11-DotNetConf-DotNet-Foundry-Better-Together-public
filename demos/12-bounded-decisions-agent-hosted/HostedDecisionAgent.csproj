@@ -1,0 +1,16 @@
+<!-- Purpose: Publish a standalone Foundry Responses v2 host for the Decisions agent. -->
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <AssemblyName>HostedDecisionAgent</AssemblyName>
+    <UserSecretsId>dotnet-conf-better-together-HostedDecisionAgent</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.21.0" />
+    <PackageReference Include="ElBruno.AI.Decisions.Foundry" Version="0.6.3" />
+    <PackageReference Include="Microsoft.Agents.AI.Foundry.Hosting" Version="1.27.0-preview.261030.1" />
+  </ItemGroup>
+</Project>

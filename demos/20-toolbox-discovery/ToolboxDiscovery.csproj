@@ -1,0 +1,11 @@
+<!-- Purpose: Inspect an existing toolbox with the supported MCP client, without inference. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UserSecretsId>dotnet-conf-better-together-ToolboxDiscovery</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.21.0" />
+    <PackageReference Include="ModelContextProtocol.Core" Version="2.2.0" />
+  </ItemGroup>
+</Project>
